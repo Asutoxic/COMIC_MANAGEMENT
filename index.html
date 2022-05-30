@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://is3-ssl.mzstatic.com/image/thumb/Purple116/v4/9a/63/d7/9a63d760-b28c-92db-bc3b-3112aab170bb/source/256x256bb.jpg" />
+    <title>Comic Manager</title>
+    <link rel="stylesheet" href="comic.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="http://127.0.0.1:5500/index.html"><img src="https://hamtruyenmoi.com/images/qc1.png" alt=""></a>
+        <div class="header-search">
+            <input placeholder="Nhập tên truyện..." type="search" id="search" autocomplete="off">
+        </div>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li><a href="#">Trang chủ</a></li>
+            <li class="sub">
+                <a href="#">Thể Loại</a>
+                <ul class="menu subcontent">
+                    <li><a href="#">Manhwa</a></li>
+                    <li><a href="#">Manhua</a></li>
+                    <li><a href="#">Manga</a></li>
+                </ul>
+            </li>
+            <li><a href="#">FanPage</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="left-side">
+            <div id="Comics"></div>
+        </div>
+        <div class="right-side">
+            <div class="add-area">
+                <div class="form-group">
+                    <label for="fullname">Tên Truyện</label>
+                    <input type="text" class="form-control" id="namecomic">
+                </div>
+                <div class="form-group">
+                    <label for="avatar">Poster</label>
+                    <input type="url" class="form-control" id="poster">
+                </div>
+                <div class="form-group">
+                    <section>
+                        <input type="radio" class="custom-form-control1" name="category">Manhwa
+                        <input type="radio" class="custom-form-control2" name="category">Manhua
+                        <input type="radio" class="custom-form-control3" name="category">Manga
+                    </section>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="createComic()">Create</button>
+                </div>
+            </div>
+        </div>
+        <script src="comic.js"></script>
+    </div>
+    <div class="footer">
+        <h2>Xin Chào Các Bạn</h2>
+    </div>
+</body>
+</html>

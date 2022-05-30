@@ -10,7 +10,7 @@ let Comics = []
 const key_data = "comic_data";
 
 function init() {
-    if(getData(key_data) == null) {
+    if (getData(key_data) == null) {
         Comics = [
             new Comic(1,
                 "Nguyên Tôn",
@@ -52,20 +52,21 @@ function getData(key) {
     return JSON.parse(localStorage.getItem(key))
 }
 
-function setData(key, data){
+function setData(key, data) {
     return localStorage.setItem(key, JSON.stringify(data))
 }
 
 function renderComic() {
+    Comics.sort(function (comic_1, comic_2) {
+        return comic_2.id - comic_1.id;
+    });
     let htmls = Comics.map(function (comic) {
         return `
             <div class="comic-info">
                 <img src="${comic.poster}" alt="">
-                <h4>#${comic.id} - ${comic.namecomic}</h4>
+                <h4>${comic.namecomic}</h4>
                 <h4>${comic.category}<h4>
-                <button class="btn btn-success btn-sm onclick="change(${comic.id})">Edit</button>
-                <button class="btn btn-primary d-none" onclick="update(${comic.id})">Update</button>
-                <button class="btn btn-warning d-none" onclick="cancel(${comic.id})">Cancel</button>
+                <button class="btn btn-success btn-sm id="create-btn" onclick="change(${comic.id})">Edit</button>
                 <button class="btn btn-danger btn-sm" onclick="remove(${comic.id})">Remove</button>
             </div>
         `
@@ -76,49 +77,44 @@ renderComic();
 
 function createComic() {
     let namecomic = document.querySelector("#namecomic").value;
-    if(!validation(namecomic)){
+    if (!validation(namecomic)) {
         alert('Xin mời nhập tên truyện!')
         return;
     }
     let poster = document.querySelector("#poster").value;
-    let category1 = document.querySelector(".custom-form-control1");
-    let category2 = document.querySelector(".custom-form-control2");
-    let category3 = document.querySelector(".custom-form-control3");
+    let category = document.querySelector("#category").value;
     let id = findMaxId() + 1;
-    if (category1.checked) {
-        category1 = "Manhwa";
-        let comic = new Comic(id, namecomic, poster, category1);
+        let comic = new Comic(id, namecomic, poster, category);
         Comics.push(comic);
         setData(key_data, Comics);
         renderComic();
         clearForm();
     }
-    if (category2.checked) {
-        category2 = "Manhua";
-        let comic = new Comic(id, namecomic, poster, category2);
-        Comics.push(comic);
-        renderComic();
-        clearForm();
-    }
-    if (category3.checked) {
-        category3 = "Manga";
-        let comic = new Comic(id, namecomic, poster, category3);
-        Comics.push(comic);
-        renderComic();
-        clearForm();
-    }
 
-    // let comic = new Comic(id, namecomic, poster, category);
-
-    // Comics.push(comic);
-    // renderComic();
-    // clearForm();
-}
+    function updateComic() {
+        let namecomic = document.querySelector("#namecomic").value;
+        let poster = document.querySelector("#poster").value;
+        let category = document.querySelector("#category").value;
+        let id = Number(document.querySelector("#comicId").value);
+      
+        let comic = Comics.find(function (comic) {
+          return comic.id == id;
+        });
+      
+        comic.namecomic = namecomic;
+        comic.poster = poster;
+        comic.category = category;
+      
+        setData(key_data, Comics);
+        renderComic();
+        cancel();
+      }
 
 function clearForm() {
     document.querySelector("#namecomic").value = "";
     document.querySelector("#poster").value = "";
-    document.querySelector("input[name=category]").checked = true;
+    document.querySelector("#category").value = "";
+    document.querySelector("#comicId").value = "0";
 }
 function findMaxId() {
     let max = 0;
@@ -130,13 +126,13 @@ function findMaxId() {
     return max;
 }
 
-function validation (field) {
-    return field !=null && field.trim() !='';
+function validation(field) {
+    return field != null && field.trim() != '';
 }
 function remove(id) {
     let confirmed = window.confirm("Bạn có muốn xóa truyện này không?");
-    if(confirmed){
-        let position = Comics.findIndex(function(comic) {
+    if (confirmed) {
+        let position = Comics.findIndex(function (comic) {
             return comic.id == id;
         })
         Comics.splice(position, 1);
@@ -144,6 +140,25 @@ function remove(id) {
         renderComic();
     }
 }
+function change(comicId) {
+    let comic = Comics.find(function (comic) {
+        return comic.id == comicId;
+    });
+    document.querySelector("#namecomic").value = comic.namecomic;
+    document.querySelector("#poster").value = comic.poster;
+    document.querySelector("#category").value = comic.category
+    document.querySelector("#create-btn").classList.add("d-none");
+    document.querySelector("#update-btn").classList.remove("d-none");
+    document.querySelector("#cancel-btn").classList.remove("d-none");
+}
+
+function cancel() {
+    clearForm();
+    document.querySelector("#create-btn").classList.remove("d-none");
+    document.querySelector("#update-btn").classList.add("d-none");
+    document.querySelector("#cancel-btn").classList.add("d-none");
+  }
+
 function ready() {
     init();
     renderComic();

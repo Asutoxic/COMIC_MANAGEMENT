@@ -48,14 +48,14 @@
                     <input type="url" class="form-control" id="poster">
                 </div>
                 <div class="form-group">
-                    <section>
-                        <input type="radio" class="custom-form-control1" name="category">Manhwa
-                        <input type="radio" class="custom-form-control2" name="category">Manhua
-                        <input type="radio" class="custom-form-control3" name="category">Manga
-                    </section>
+                    <label for="category">Thể Loại</label>
+                    <input type="url" class="form-control" id="category">
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary" onclick="createComic()">Create</button>
+                    <button class="btn btn-primary" id="create-btn" onclick="createComic()">Create</button>
+                    <button class="btn btn-primary d-none" id="update-btn" onclick="updateComic()">Update</button>
+                    <button class="btn btn-warning d-none" id="cancel-btn" onclick="cancel()">Cancel</button>
+                    <input type="hidden" id="comicId" value="0">
                 </div>
             </div>
         </div>
@@ -65,4 +65,5 @@
         <h2>Xin Chào Các Bạn</h2>
     </div>
 </body>
+
 </html>

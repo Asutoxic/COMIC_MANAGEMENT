@@ -15,22 +15,22 @@
     <div class="header">
         <a href="http://127.0.0.1:5500/index.html"><img src="https://hamtruyenmoi.com/images/qc1.png" alt=""></a>
         <div class="header-search">
-            <input placeholder="Nhập tên truyện..." type="search" id="search" autocomplete="off">
+            <input placeholder="Nhập tên truyện..." type="search" class="search-control" oninput="search(this)">
         </div>
     </div>
     <nav>
         <ul class="menu">
-            <li><a href="#">Trang chủ</a></li>
+            <li><a href="http://127.0.0.1:5500/index.html">Trang chủ</a></li>
             <li class="sub">
                 <a href="#">Thể Loại</a>
                 <ul class="menu subcontent">
-                    <li><a href="#">Manhwa</a></li>
-                    <li><a href="#">Manhua</a></li>
-                    <li><a href="#">Manga</a></li>
+                    <li><a href="#" onclick="Manhwa()">Manhwa</a></li>
+                    <li><a href="#" onclick="Manhua()">Manhua</a></li>
+                    <li><a href="#" onclick="Manga()">Manga</a></li>
                 </ul>
             </li>
-            <li><a href="#">FanPage</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a href="https://www.facebook.com/codegymhue">FanPage</a></li>
+            <li><a href="https://www.facebook.com/trankiemgiavu/" target="_blank">Liên hệ</a></li>
         </ul>
     </nav>
     <div class="container">

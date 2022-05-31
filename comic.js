@@ -6,6 +6,7 @@ class Comic {
         this.category = category;
     }
 }
+let Id = 0;
 let Comics = []
 const key_data = "comic_data";
 
@@ -56,7 +57,7 @@ function setData(key, data) {
     return localStorage.setItem(key, JSON.stringify(data))
 }
 
-function renderComic() {
+function renderComic(Comics) {
     Comics.sort(function (comic_1, comic_2) {
         return comic_2.id - comic_1.id;
     });
@@ -73,7 +74,7 @@ function renderComic() {
     })
     document.querySelector("#Comics").innerHTML = htmls.join("");
 }
-renderComic();
+// renderComic();
 
 function createComic() {
     let namecomic = document.querySelector("#namecomic").value;
@@ -82,12 +83,20 @@ function createComic() {
         return;
     }
     let poster = document.querySelector("#poster").value;
+    if (!validation(poster)) {
+        alert('Xin mời thêm poster!')
+        return;
+    }
     let category = document.querySelector("#category").value;
+    if (!validation(category)) {
+        alert('Xin mời nhập thể loại truyện!')
+        return;
+    }
     let id = findMaxId() + 1;
         let comic = new Comic(id, namecomic, poster, category);
         Comics.push(comic);
         setData(key_data, Comics);
-        renderComic();
+        renderComic(Comics);
         clearForm();
     }
 
@@ -95,18 +104,19 @@ function createComic() {
         let namecomic = document.querySelector("#namecomic").value;
         let poster = document.querySelector("#poster").value;
         let category = document.querySelector("#category").value;
-        let id = Number(document.querySelector("#comicId").value);
+        // let id = Number(document.querySelector("#comicId").value);
+        // console.log(Id);
       
         let comic = Comics.find(function (comic) {
-          return comic.id == id;
+          return comic.id == Id;
         });
-      
+        // console.log(comic);
         comic.namecomic = namecomic;
         comic.poster = poster;
         comic.category = category;
       
         setData(key_data, Comics);
-        renderComic();
+        renderComic(Comics);
         cancel();
       }
 
@@ -137,10 +147,11 @@ function remove(id) {
         })
         Comics.splice(position, 1);
         setData(key_data, Comics)
-        renderComic();
+        renderComic(Comics);
     }
 }
 function change(comicId) {
+    Id = comicId
     let comic = Comics.find(function (comic) {
         return comic.id == comicId;
     });
@@ -159,9 +170,37 @@ function cancel() {
     document.querySelector("#cancel-btn").classList.add("d-none");
   }
 
+  function search(searchInput) {
+    let result = Comics.filter(function (comic) {
+      return (
+        comic.namecomic.toLowerCase().indexOf(searchInput.value.toLowerCase()) !=-1 
+      );
+    });
+    renderComic(result);
+  }
+
+function Manhwa() {
+    let result = Comics.filter (function (Manhwa) {
+        return Manhwa.category.indexOf("Manhwa") !=1
+    })
+    renderComic(result)
+}
+function Manhua() {
+    let result = Comics.filter (function (Manhua) {
+        return Manhua.category.indexOf("Manhua") !=1
+    })
+    renderComic(result)
+}
+function Manga() {
+    let result = Comics.filter (function (Manga) {
+        return Manga.category.indexOf("Manga") !=1
+    })
+    renderComic(result)
+}
+
 function ready() {
     init();
-    renderComic();
+    renderComic(Comics);
 }
 
 ready();

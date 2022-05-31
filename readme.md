@@ -8,4 +8,5 @@
 
 ## Kết quả đạt được
 1. Link mã nguồn: https://github.com/Asutoxic/ComicManager
-2. Link sản phẩm: 
+2. Link sản phẩm: https://asutoxic.github.io/ComicManager/
+3. Tên đăng nhập: "admin", mật khẩu: 123456

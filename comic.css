@@ -1,7 +1,7 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
     box-sizing: border-box;
     font-size: 13px;
 }
@@ -14,9 +14,10 @@ ul{
 nav > ul.menu{
     display: flex;
     position: relative;
+    
 }
 ul.menu{
-    background-color: lightgray;
+    background-color: #B8F1B0;
     
 }
 ul.menu > li{
@@ -24,13 +25,16 @@ ul.menu > li{
     
 }
 ul.menu > li > a{
+    
     text-decoration: none;
     display: block;
     padding: 20px;
-    background-color: lightgraygray;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
 }
 ul.menu > li > a:hover{
-    background-color: blue;
+    background-color: #14C38E;
     color: white;
 }
 .subcontent{
@@ -45,7 +49,7 @@ ul.menu > li > a:hover{
     width: 400px;
     height: 40px;
     padding-left: 7px;
-    background-color: rgb(98, 37, 179);
+    background-color: #B8F1B0;
     border-radius: 4px;
     font-size: 15px;
 
@@ -54,7 +58,7 @@ ul.menu > li > a:hover{
 .hearder {
     display: flex;
     justify-content: space-between;
-    
+    background-color: #00FFAB;
     /* align-content: center;
     align-items: center;
     background-color: rgb(189, 17, 69);
@@ -87,6 +91,7 @@ ul.menu > li > a:hover{
     display: flex;
     margin: 0px auto;
     justify-content: space-between;
+    background-image: url(https://i.pinimg.com/564x/13/0e/9d/130e9dfcdf484a6ae31eb3c3eb4d8e59.jpg) ;
 }
 
 .left-side {
@@ -95,7 +100,7 @@ ul.menu > li > a:hover{
 
 .right-side {
     flex: 29%;
-    background-color: cadetblue;
+    background-color: #b5e6ae;
     padding: 5px 3px;
     border-radius: 3px;
 }
@@ -104,7 +109,7 @@ ul.menu > li > a:hover{
     width: 200px;
     height: 420px;
     text-align: center;
-    background-color: white;
+    background-color: #B8F1B0;
     border-radius: 10px;
     padding: 5px;
     float: left;
@@ -113,7 +118,7 @@ ul.menu > li > a:hover{
 
 .comic-info:hover {
     cursor: pointer;
-    background-color: rgb(202, 190, 190);
+    background-color: #14C38E;
 }
 
 .comic-info>img {
@@ -209,8 +214,8 @@ ul.menu > li > a:hover{
 .footer {
     padding: 20px;
     text-align: center;
-    background: #ddd;
     margin-top: 20px;
+    background-color: #E3FCBF;
 }
 
   .d-none{

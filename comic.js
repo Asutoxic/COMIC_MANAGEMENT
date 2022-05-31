@@ -181,23 +181,25 @@ function cancel() {
 
 function Manhwa() {
     let result = Comics.filter (function (Manhwa) {
-        return Manhwa.category.indexOf("Manhwa") !=1
+        return Manhwa.category.indexOf("Manhwa") != -1
     })
     renderComic(result)
 }
 function Manhua() {
     let result = Comics.filter (function (Manhua) {
-        return Manhua.category.indexOf("Manhua") !=1
+        return Manhua.category.indexOf("Manhua") != -1
     })
     renderComic(result)
 }
 function Manga() {
     let result = Comics.filter (function (Manga) {
-        return Manga.category.indexOf("Manga") !=1
+        return Manga.category.indexOf("Manga") != -1
     })
     renderComic(result)
 }
-
+function logout() {
+    window.location.replace("index.html")
+}
 function ready() {
     init();
     renderComic(Comics);
